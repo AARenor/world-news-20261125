@@ -27,10 +27,10 @@ F_TOP = font(BOLD, 14)
 F_DATE = font(BOLD, 62)
 F_SUB = font(REG, 16)
 F_HERO = font(BOLD, 20)
-F_TAG = font(BOLD, 11)
+F_TAG = font(BOLD, 9)
 F_CAP = font(REG, 14)
-F_NUM = font(BOLD, 12)
-F_LINE = font(REG, 13)
+F_NUM = font(BOLD, 10)
+F_LINE = font(REG, 11)
 F_FOOT = font(REG, 12)
 
 
@@ -147,6 +147,14 @@ STORIES = [
     ("WASHINGTON", "Ábrego García leaves US for Spain"),
     ("HORMUZ", "Swim highlights environmental cost of war"),
     ("WINDSOR", "Two arrested on William and Kate's estate"),
+    ("JERUSALEM", "Israeli ground operation ends beyond Yellow Line"),
+    ("GAZA", "Oxfam says attacks turned Gaza into a toxic wasteland"),
+    ("TEHRAN", "Singer flogged for performing without hijab, lawyers say"),
+    ("ABUJA", "Emir of Daura suspended after sexual assault claims"),
+    ("CAPE TOWN", "Father says police ignored his daughter's murder"),
+    ("ANTALYA", "Africa seeks more climate money at UN climate summit"),
+    ("NEW DELHI", "Leader barred from UK flight says government lost the plot"),
+    ("JOHANNESBURG", "ANC fights to keep key cities after election setback"),
 ]
 
 
@@ -158,7 +166,7 @@ def main():
     date = "25 NOVEMBER 2026"
     dw = d.textbbox((0, 0), date, font=F_DATE)[2]
     d.text(((W - dw) // 2, 24), date, font=F_DATE, fill=PAPER)
-    d.text((20, 98), "32 STORIES  ·  6 REGIONS  ·  ALL FIRST REPORTED WEDNESDAY 25 NOV",
+    d.text((20, 98), "40 STORIES  ·  6 REGIONS  ·  ALL FIRST REPORTED WEDNESDAY 25 NOV",
            font=F_SUB, fill=(214, 198, 168))
 
     y = 126
@@ -190,13 +198,12 @@ def main():
     start_y = 532
     for i, (place, text) in enumerate(STORIES):
         col, row = i // 8, i % 8
-        x = 12 + col * 252
+        x = 12 + col * 202
         yy = start_y + row * 43
         d.text((x, yy), f"{i + 1:02}", font=F_NUM, fill=ACCENT)
-        d.text((x + 24, yy), place, font=F_TAG, fill=GREY)
-        for k, line in enumerate(wrap(d, text, F_LINE, 226)[:2]):
-            d.text((x + 24, yy + 13 + k * 14), line, font=F_LINE, fill=INK)
-
+        d.text((x + 20, yy), place, font=F_TAG, fill=GREY)
+        for k, line in enumerate(wrap(d, text, F_LINE, 180)[:2]):
+            d.text((x + 20, yy + 12 + k * 12), line, font=F_LINE, fill=INK)
     d.line((12, 884, W - 12, 884), fill=RULE, width=2)
     d.text((14, 890), "THE DAY AT A GLANCE", font=F_TAG, fill=ACCENT)
     d.rectangle((14, 908, 340, 976), outline=RULE, width=2)
@@ -209,7 +216,7 @@ def main():
         d.ellipse((x - 8, y - 8, x + 8, y + 8), fill=ACCENT)
         d.text((x - 3, y - 6), label, font=F_TAG, fill=(255, 245, 230))
     d.text((352, 908), "DATE CHECK", font=F_TAG, fill=ACCENT)
-    d.text((352, 926), "All 32 stories above were first reported on 25 November 2026.", font=F_FOOT, fill=INK)
+    d.text((352, 926), "All 40 stories above were first reported on 25 November 2026.", font=F_FOOT, fill=INK)
     d.text((352, 944), "Sovereigns, courts, war, space, diplomacy, climate and culture all moved.", font=F_FOOT, fill=INK)
     d.text((352, 962), "Sources: BBC News, 25 November 2026  ·  Drawn by an AI agent", font=F_FOOT, fill=GREY)
 
